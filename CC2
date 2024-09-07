@@ -1,0 +1,26 @@
+public class Invoice {
+    public static void main(String[] args) {
+        // Store Information
+        System.out.println("\"Hannel's Tech Store\"");
+        System.out.println("123 Main Street, Quezon City, Philippines");
+        System.out.println("\n---------------------------------------------\n");
+
+        // Itemized List
+        System.out.println("Item\t\tQuantity\tPrice (PHP)");
+        System.out.println("---------------------------------------------");
+        System.out.println("Laptop\t\t1\t\t₱50,000");
+        System.out.println("Mouse\t\t2\t\t₱500");
+        System.out.println("Keyboard\t1\t\t₱1,200");
+        System.out.println("Headset\t\t1\t\t₱1,500");
+        System.out.println("---------------------------------------------");
+
+        // Total Amount
+        System.out.print("Total Amount Due: ");
+        System.out.println("₱53,200");
+
+        // Thank You Message
+        System.out.println("\n---------------------------------------------");
+        System.out.println("Thank you for shopping at Hannel's Tech Store!");
+        System.out.println("We hope to see you again!");
+    }
+}
