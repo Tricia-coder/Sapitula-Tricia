@@ -1,0 +1,32 @@
+package invoice;
+
+public class Invoice {
+ public static void main(String[] args) {
+ // Store Information
+ System.out.println("\t\"Tricia's Grocery Mart\"");
+ System.out.print("\s\s\sPurok 2 Irisan,Millenial Village\n");
+ System.out.println("\t\s\sBaguio City,2600");
+ System.out.println("\t\s\s\s\s0909-564-2647\n");
+ System.out.print("\t\tINVOICE");
+ System.out.print("\n------------------------------------------\n");
+ System.out.println("09/08/2024\t10:46");
+ System.out.print("\n------------------------------------------\n");
+
+ //Itemized List of Purchase
+ System.out.println("Item\t\tQuantity\tPrice");
+ System.out.println("\n------------------------------------------\n");
+ System.out.println("Bread\t\t3\t\t₱55.80");
+ System.out.println("Ice\t\t2\t\t₱15.00");
+ System.out.println("French Fries\t2\t\t₱120.00");
+ System.out.print("\n------------------------------------------\n");
+
+ //Total Amount of purchases
+ System.out.println("Item(s)\t\t7");
+ System.out.println("Total Amount Due:\t\t₱437.40");
+ 
+ //Thank You Message
+ System.out.println("\n------------------------------------------\n");
+ System.out.println("\t\s\sThank you for buying");
+ System.out.println("\tWe hope to see you again!");
+ }
+}
