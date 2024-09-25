@@ -1,0 +1,21 @@
+package mainnn;
+
+import java.util.Scanner;
+
+public class Sept29 {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        int fnum = 18;      // assignment statement
+        int snum = 10;      // assignment statement
+        int tnum = 23;      // assignment statement
+        
+        if (fnum > snum) {
+            System.out.println(fnum + " is larger than " + snum);
+        } else if (snum > fnum) {
+            System.out.println(snum + " is larger than " + fnum);
+        } else if (tnum > fnum) {
+            System.out.println(tnum + " is larger than " + fnum);
+        }
+    }
+}
