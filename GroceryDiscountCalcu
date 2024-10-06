@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class GroceryDiscountCalcu {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the total amount: PHP ");
+        double pAmount = scanner.nextDouble();
+
+        double dc = 0.0; // declare dc as a double
+
+        // Discount rates
+        if (pAmount >= 1000 && pAmount <= 5000) {
+            dc = 0.05; 
+        } else if (pAmount >= 5001 && pAmount <= 10000) {
+            dc = 0.10;
+        } else if (pAmount > 10000) {
+            dc = 0.15;
+        }
+
+        // Calculation for final price after applying discount
+        double dAmount = pAmount * dc;
+        double finalPrice = pAmount - dAmount; // declare finalPrice as a double
+
+        if (dc > 0) {
+            System.out.println("Discount: " + (int)(dc * 100) + "%");
+        } else {
+            System.out.println("No discount.");
+        }
+        System.out.println("Final price: PHP " + finalPrice);
+    }
+}
