@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class ClassroomAttendanceSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the total number of students
+        System.out.print("Enter the total number of students: ");
+        int totalStudents = scanner.nextInt();
+
+        // Initialize counters for present and absent students
+        int presentCount = 0;
+        int absentCount = 0;
+
+        // Use a loop to ask whether each student is present or absent
+        for (int i = 1; i <= totalStudents; i++) {
+            System.out.print("Is student " + i + " present? (Y/N): ");
+            char response = scanner.next().charAt(0);
+
+            if (response == 'Y' || response == 'y') {
+                presentCount++;
+            } else if (response == 'N' || response == 'n') {
+                absentCount++;
+            } else {
+                System.out.println("Invalid response. Please enter Y or N.");
+                i--; // retry the current student
+            }
+        }
+
+        // Display the final counts
+        System.out.println("Total present: " + presentCount);
+        System.out.println("Total absent: " + absentCount);
+    }
+}
