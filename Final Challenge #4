@@ -1,0 +1,104 @@
+class Node {
+    String url; // The URL of the web page
+    Node prev; // Pointer to the previous node
+    Node next; // Pointer to the next node
+
+    public Node(String url) {
+        this.url = url;
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class BrowserHistory {
+    private Node current; // Pointer to the current page
+
+    // Constructor to initialize the browser history
+    public BrowserHistory() {
+        this.current = null;
+    }
+
+    // Method to visit a new page
+    public void visit(String url) {
+        Node newNode = new Node(url);
+        
+        // If there's a current page, link it to the new page
+        if (current != null) {
+            current.next = newNode;
+            newNode.prev = current;
+        }
+        
+        // Move the current pointer to the new node
+        current = newNode;
+        
+        // Clear forward history
+        if (current.next != null) {
+            current.next = null;
+        }
+        
+        System.out.println("Visited: " + url);
+    }
+
+    // Method to go back to the previous page
+    public void back() {
+        if (current != null && current.prev != null) {
+            current = current.prev;
+            System.out.println("Went back to: " + current.url);
+        } else {
+            System.out.println("No previous page.");
+        }
+    }
+
+    // Method to go forward to the next page
+    public void forward() {
+        if (current != null && current.next != null) {
+            current = current.next;
+            System.out.println("Went forward to: " + current.url);
+        } else {
+            System.out.println("No next page.");
+        }
+    }
+
+    // Method to display the current page
+    public void currentPage() {
+        if (current != null) {
+            System.out.println("Current page: " + current.url);
+        } else {
+            System.out.println("No pages visited.");
+        }
+    }
+}
+
+// Main class to test the BrowserHistory functionality
+public class BrowserHistoryTest {
+    public static void main(String[] args) {
+        BrowserHistory history = new BrowserHistory();
+        
+        // Simulating browser navigation
+        history.visit("www.example.com");
+        history.currentPage(); // Should show the current page
+        
+        history.visit("www.google.com");
+        history.currentPage(); // Should show the current page
+        
+        history.back(); // Should go back to example.com
+        history.currentPage(); // Should show example.com
+        
+        history.forward(); // Should go forward to google.com
+        history.currentPage(); // Should show google.com
+        
+        history.visit("www.wikipedia.org"); // Visiting a new page clears forward history
+        history.currentPage(); // Should show wikipedia.org
+        
+        history.back(); // Should go back to google.com
+        history.currentPage(); // Should show google.com
+        
+        history.back(); // Should go back to example.com
+        history.currentPage(); // Should show example.com
+        
+        history.back(); // Should show no previous page
+        history.forward(); // Should go forward to google.com
+        history.forward(); // Should go forward to wikipedia.org
+        history.forward(); // Should show no next page
+    }
+}
