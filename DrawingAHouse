@@ -1,0 +1,50 @@
+import javax.swing.*;
+import java.awt.*;
+
+// Create a class that extends JPanel to draw the house
+public class DrawingAHouse extends JPanel {
+
+    // Override the paintComponent method to perform custom painting
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // Call the superclass method
+
+        // Set the color for the house body
+        g.setColor(Color.YELLOW);
+        // Draw the house body (a rectangle)
+        g.fillRect(100, 150, 200, 150);
+
+        // Set the color for the roof
+        g.setColor(Color.BLUE);
+        // Draw the roof (a triangle)
+        int[] xPoints = { 80, 200, 320 };
+        int[] yPoints = { 150, 50, 150 };
+        g.fillPolygon(xPoints, yPoints, 3);
+
+        // Set the color for the door
+        g.setColor(Color.BROWN);
+        // Draw the door (a rectangle)
+        g.fillRect(180, 230, 40, 70);
+
+        // Set the color for the windows
+        g.setColor(Color.BLUE);
+        // Draw the left window (a rectangle)
+        g.fillRect(120, 180, 40, 40);
+        // Draw the right window (a rectangle)
+        g.fillRect(240, 180, 40, 40);
+    }
+
+    // Main method to create the JFrame and add the HouseDrawing panel
+    public static void main(String[] args) {
+        // Create a new JFrame
+        JFrame frame = new JFrame("Simple House Drawing");
+        // Set the size of the frame
+        frame.setSize(400, 400);
+        // Set the default close operation
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Add an instance of HouseDrawing to the frame
+        frame.add(new HouseDrawing());
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
