@@ -1,6 +1,6 @@
 /* Sapitula, Tricia Jing Fang
-   December 4, 2024
-   Drawing a House */
+December 4, 2024
+Drawing a House */
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,9 @@ import java.awt.*;
 // Create a class that extends JPanel to draw the house
 public class DrawingAHouse extends JPanel {
 
-    // Override the paintComponent method to perform custom painting
+    private static final long serialVersionUID = 1L;
+
+	// Override the paintComponent method to perform custom painting
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // Call the superclass method
@@ -21,12 +23,12 @@ public class DrawingAHouse extends JPanel {
         // Set the color for the roof
         g.setColor(Color.MAGENTA);
         // Draw the roof (a triangle)
-        int[] xPoints = { 80, 200, 320 };
-        int[] yPoints = { 150, 50, 150 };
+        int[] xPoints = {80, 200, 320};
+        int[] yPoints = {150, 50, 150};
         g.fillPolygon(xPoints, yPoints, 3);
 
         // Set the color for the door
-        g.setColor(Color.darkGray);
+        g.setColor(Color.DARK_GRAY); 
         // Draw the door (a rectangle)
         g.fillRect(180, 230, 40, 70);
 
@@ -46,7 +48,7 @@ public class DrawingAHouse extends JPanel {
         frame.setSize(400, 400);
         // Set the default close operation
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Add an instance of HouseDrawing to the frame
+        // Add an instance of DrawingAHouse to the frame
         frame.add(new DrawingAHouse());
         // Make the frame visible
         frame.setVisible(true);
