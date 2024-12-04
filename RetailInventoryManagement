@@ -1,5 +1,7 @@
-*/ Sapitula, Tricia Jing Fang
-
+/* Sapitula, Tricia Jing Fang
+ * November 20,2024
+ * Laboratory Challenge No.3
+ */
 import java.util.Scanner;
 
 public class RetailInventoryManagement {
