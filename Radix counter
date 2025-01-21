@@ -59,22 +59,10 @@ public class RadixSort {
         System.out.println(); // New line after printing the array
     }
 
-    // Method to generate an array of random integers between 0 and 9999
-    static int[] generateRandomArray(int size) {
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = (int) (Math.random() * 10000); // Random number between 0 and 9999
-        }
-        return arr;
-    }
-
     // Driver code
     public static void main(String[] args) {
-        // Get the size of the array from the user
-        System.out.print("Enter the number of elements in the array: ");
-        int n = new java.util.Scanner(System.in).nextInt();
-
-        int[] arr = generateRandomArray(n); // Create an array of random numbers between 0 and 9999
+        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66}; // Array to be sorted
+        int n = arr.length; // Get the size of the array
         int[] counter = {0}; // Initialize counter as an array to keep track of operations
 
         // Print the original array
