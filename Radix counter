@@ -1,0 +1,94 @@
+import java.util.Arrays;
+
+public class RadixSort {
+
+    // The main function that sorts arr[] of size n using Radix Sort
+    static void radixSort(int[] arr, int n, int[] counter) {
+        counter[0]++; // Increment for function call
+        int max = arr[0]; // Assume the first element is the maximum
+
+        // Find the maximum number to know the number of digits
+        for (int i = 1; i < n; i++) {
+            counter[0]++; // Increment for loop iteration
+            if (arr[i] > max) {
+                max = arr[i]; // Update max if current element is greater
+            }
+        }
+
+        // Do counting sort for every digit
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            counter[0]++; // Increment for loop iteration
+            int[] output = new int[n]; // Output array to hold sorted values
+            int[] count = new int[10]; // Count array to store count of occurrences
+
+            // Initialize count array to 0
+            Arrays.fill(count, 0);
+
+            // Store count of occurrences in count[]
+            for (int i = 0; i < n; i++) {
+                counter[0]++; // Increment for loop iteration
+                count[(arr[i] / exp) % 10]++; // Increment count for the digit
+            }
+
+            // Change count[i] so that count[i] now contains actual position of this digit in output[]
+            for (int i = 1; i < 10; i++) {
+                counter[0]++; // Increment for loop iteration
+                count[i] += count[i - 1]; // Cumulative count
+            }
+
+            // Build the output array
+            for (int i = n - 1; i >= 0; i--) {
+                counter[0]++; // Increment for loop iteration
+                output[count[(arr[i] / exp) % 10] - 1] = arr[i]; // Place the element in the output array
+                count[(arr[i] / exp) % 10]--; // Decrease count for the digit
+            }
+
+            // Copy the output array to arr[], so that arr[] now contains sorted numbers according to current digit
+            for (int i = 0; i < n; i++) {
+                counter[0]++; // Increment for loop iteration
+                arr[i] = output[i]; // Copy sorted values back to original array
+            }
+        }
+    }
+
+    // A utility function to print an array
+    static void printArray(int[] arr) {
+        for (int value : arr) {
+            System.out.print(value + " "); // Print each element
+        }
+        System.out.println(); // New line after printing the array
+    }
+
+    // Method to generate an array of random integers between 0 and 9999
+    static int[] generateRandomArray(int size) {
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = (int) (Math.random() * 10000); // Random number between 0 and 9999
+        }
+        return arr;
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+        // Get the size of the array from the user
+        System.out.print("Enter the number of elements in the array: ");
+        int n = new java.util.Scanner(System.in).nextInt();
+
+        int[] arr = generateRandomArray(n); // Create an array of random numbers between 0 and 9999
+        int[] counter = {0}; // Initialize counter as an array to keep track of operations
+
+        // Print the original array
+        System.out.println("Original array:");
+        printArray(arr);
+
+        // Function call to perform Radix Sort
+        radixSort(arr, n, counter);
+
+        // Print the sorted array
+        System.out.println("Sorted array:");
+        printArray(arr);
+
+        // Print the final counter value
+        System.out.println("Final counter: " + counter[0]);
+    }
+}
