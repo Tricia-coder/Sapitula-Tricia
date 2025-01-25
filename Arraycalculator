@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class CalculateTheAddress {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask the user to specify the number of dimensions
+        System.out.print("Enter the Number of Dimensions: ");
+        int n = scanner.nextInt(); // Capture the number of dimensions from user input
+
+        // Request the user to provide the base address
+        System.out.print("Enter the Base Address: ");
+        int baseAddress = scanner.nextInt(); // Capture the base address from user input
+
+        // Inquire about the size of each element in bytes
+        System.out.print("Enter the Size of Each Element (in bytes): ");
+        int elementSize = scanner.nextInt(); // Capture the size of each element from user input
+
+        // Initialize an array to store the upper bounds for each dimension
+        int[] upperBounds = new int[n];
+        System.out.println("Enter the Upper Bounds for Each Dimension: "); // Prompt the user to input upper bounds
+        for (int i = 0; i < n; i++) { // Iterate through each dimension
+            System.out.print("\tUpper Bound for Dimension " + (i + 1) + ": "); // Ask for the upper bound of the current dimension
+            upperBounds[i] = scanner.nextInt(); // Store the upper bound in the array
+        }
+
+        // Initialize an array to store the indices for each dimension
+        int[] indices = new int[n];
+        System.out.println("Enter the Indices for Each Dimension: "); // Prompt the user to input indices
+        for (int i = 0; i < n; i++) { // Iterate through each dimension
+            System.out.print("\tIndex in Dimension " + (i + 1) + ": "); // Ask for the index of the current dimension
+            indices[i] = scanner.nextInt(); // Store the index in the array
+        }
+
+        // Start with an address variable set to zero; this will be computed based on the inputs
+        int address = 0;
+
+        // Calculate the address using the specified formula
+        for (int i = 0; i < n; i++) { // Loop through each dimension to compute the address
+            int product = 1; // Initialize the product to 1 for the current dimension
+
+            // Compute the product of upper bounds for dimensions following the current one
+            for (int j = i + 1; j < n; j++) { // Loop through upper bounds starting from the next dimension
+                product *= upperBounds[j]; // Multiply the product by the upper bound of the current dimension
+            }
+
+            // Update the address by adding the contribution from the current index
+            address += indices[i] * product; // Add the contribution of the current index to the total address
+        }
+
+        // Calculate the final address by scaling the offset and adding the base address
+        address = baseAddress + (address * elementSize); // Compute the final address
+
+        // Display the calculated address to the user
+        System.out.println("The Calculated Address is: " + address); // Output the computed address
+
+        scanner.close(); // Close the scanner to free up system resources
+    }
+}
